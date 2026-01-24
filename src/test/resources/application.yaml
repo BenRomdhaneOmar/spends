@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: spends-test
+  threads:
+    virtual:
+      enabled: true
+server:
+  port: 0
+management:
+  endpoints:
+    enabled-by-default: false
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false

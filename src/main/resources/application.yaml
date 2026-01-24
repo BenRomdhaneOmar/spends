@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: spends
+  threads:
+    virtual:
+      enabled: true
+server:
+  port: 8000
+management:
+  server:
+    port: 8001
+  endpoints:
+    enabled-by-default: true
+    web:
+      base-path: /manage
+      exposure:
+        include: "*"
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /docs/swagger-ui
+    supportedSubmitMethods: get,post,delete,head,patch,put,options
