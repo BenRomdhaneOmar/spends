@@ -50,6 +50,10 @@
         <java.version>25</java.version>
         <!--KOTLIN-->
         <kotlin.version>2.3.0</kotlin.version>
+        <kotlinx.date-time.version>0.7.1-0.6.x-compat</kotlinx.date-time.version>
+        <kotlin.serialization.version>1.10.0</kotlin.serialization.version>
+        <!--HELPER-->
+        <kotlin-monad-library.version>0.0.19</kotlin-monad-library.version>
         <!--DOCUMENTATION-->
         <openapi.version>3.0.1</openapi.version>
     </properties>
@@ -65,6 +69,11 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-datetime-jvm</artifactId>
+            <version>${kotlinx.date-time.version}</version>
         </dependency>
 
         <!--SPRING-->
@@ -83,12 +92,43 @@
             <groupId>tools.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-serialization-json</artifactId>
+            <version>${kotlin.serialization.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+
+        <!--HELPER-->
+
+        <dependency>
+            <groupId>io.github.benromdhaneomar</groupId>
+            <artifactId>kotlin-monads-multiplatform-library-jvm</artifactId>
+            <version>${kotlin-monad-library.version}</version>
+        </dependency>
 
         <!--DOCUMENTATION-->
 
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${openapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+            <version>${openapi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-scalar</artifactId>
             <version>${openapi.version}</version>
         </dependency>
 
@@ -149,12 +189,18 @@
                     </args>
                     <compilerPlugins>
                         <plugin>spring</plugin>
+                        <plugin>kotlinx-serialization</plugin>
                     </compilerPlugins>
                 </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
                         <artifactId>kotlin-maven-allopen</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-serialization</artifactId>
                         <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
@@ -166,6 +212,29 @@
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <buildArgs>
+                        <buildArg>--enable-preview</buildArg>
+                        <buildArg>-H:+UnlockExperimentalVMOptions</buildArg>
+                        <buildArg>-H:+ReportExceptionStackTraces</buildArg>
+                        <buildArg>-H:IncludeResourceBundles=org.springframework.web.servlet.LocaleResolver</buildArg>
+                        <buildArg>-H:IncludeResourceBundles=org.springframework.web.servlet.i18n.SessionLocaleResolver</buildArg>
+                        <buildArg>-H:IncludeResourceBundles=org.springframework.context.support.ResourceBundleMessageSource</buildArg>
+                        <buildArg>-H:IncludeResourceBundles=messages</buildArg>
+                        <buildArg>-H:IncludeResourceBundles=ValidationMessages</buildArg>
+                        <buildArg>-H:IncludeResources=.*\.properties$</buildArg>
+                        <buildArg>-H:IncludeResources=.*\.yml$</buildArg>
+                        <buildArg>-H:IncludeResources=.*\.yaml$</buildArg>
+                        <buildArg>-H:IncludeResources=META-INF/spring\.factories</buildArg>
+                        <buildArg>-H:IncludeResources=META-INF/spring/.*</buildArg>
+<!--                        <buildArg>-H:ReflectionConfigurationResources=${project.basedir}/reflect-config.json</buildArg>-->
+                        <buildArg>-O3</buildArg>
+                    </buildArgs>
+                    <metadataRepository>
+                        <enabled>true</enabled>
+                    </metadataRepository>
+                </configuration>
             </plugin>
 
         </plugins>

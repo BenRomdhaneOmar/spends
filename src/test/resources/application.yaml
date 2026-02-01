@@ -4,6 +4,8 @@ spring:
   threads:
     virtual:
       enabled: true
+  aot:
+    enabled: false
 server:
   port: 0
 management:
@@ -14,3 +16,15 @@ springdoc:
     enabled: false
   swagger-ui:
     enabled: false
+scalar:
+  enabled: false
+settings:
+  defaultLanguageCode: en
+spends:
+  queries:
+    language: language
+  headers:
+    count: spends_count
+    errors:
+      messages: errors_messages
+      codes: errors_codes

@@ -39,4 +39,5 @@ docker run --rm -p 8000:8000 -p 8001:8001 spends:latest
 ## Endpoints:
 
 - [Actuator](http://localhost:8001/manage)
-- [Swagger-ui](http://localhost:8000/swagger-ui/)
+- [Swagger-ui](http://localhost:8000/docs/swagger-ui/index.html)
+- [Scalar](http://localhost:8000/scalar)
