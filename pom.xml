@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.1</version>
+        <version>4.0.2</version>
         <relativePath/>
     </parent>
 
@@ -49,7 +49,7 @@
         <!--JAVA-->
         <java.version>25</java.version>
         <!--KOTLIN-->
-        <kotlin.version>2.3.0</kotlin.version>
+        <kotlin.version>2.3.10</kotlin.version>
         <kotlinx.date-time.version>0.7.1-0.6.x-compat</kotlinx.date-time.version>
         <kotlin.serialization.version>1.10.0</kotlin.serialization.version>
         <!--HELPER-->
