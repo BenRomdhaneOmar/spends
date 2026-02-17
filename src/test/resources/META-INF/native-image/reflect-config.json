@@ -1,0 +1,26 @@
+[
+  {
+    "name": "org.springframework.context.support.ResourceBundleMessageSource",
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.springframework.web.servlet.LocaleResolver",
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.springframework.web.servlet.i18n.SessionLocaleResolver",
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver",
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator",
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.springframework.web.servlet.support.SessionFlashMapManager",
+    "allDeclaredConstructors": true
+  }
+]

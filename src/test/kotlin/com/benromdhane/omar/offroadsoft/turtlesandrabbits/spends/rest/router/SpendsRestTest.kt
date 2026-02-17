@@ -24,7 +24,7 @@ import kotlin.uuid.Uuid
 
 @OptIn(ExperimentalUuidApi::class)
 @SpringBootTest
-class SpendsRestRouterTest private constructor(
+class SpendsRestTest private constructor(
     @Autowired private val spendsSettings: SpendsSettings,
     @Autowired private val frameworkSettings: FrameworkSettings,
     @Autowired private val spendsRestRouter: SpendsRestRouter,

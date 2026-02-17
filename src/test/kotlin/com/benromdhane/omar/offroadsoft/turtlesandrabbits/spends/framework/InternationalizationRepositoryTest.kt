@@ -76,7 +76,7 @@ class InternationalizationRepositoryTest(
     @Test
     fun `for code must return default message code if message code provided exist in bundles`() {
         val messageCode = "test.message"
-        val languageCode = "ar"
+        val languageCode = "es"
 
         val result =
             this.internationalizationRepository

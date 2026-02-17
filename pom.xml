@@ -208,7 +208,6 @@
 
             <!--PACKAGING-->
 
-
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
@@ -218,19 +217,16 @@
                         <buildArg>--enable-preview</buildArg>
                         <buildArg>-H:+UnlockExperimentalVMOptions</buildArg>
                         <buildArg>-H:+ReportExceptionStackTraces</buildArg>
-                        <buildArg>-H:IncludeResourceBundles=org.springframework.web.servlet.LocaleResolver</buildArg>
-                        <buildArg>-H:IncludeResourceBundles=org.springframework.web.servlet.i18n.SessionLocaleResolver</buildArg>
-                        <buildArg>-H:IncludeResourceBundles=org.springframework.context.support.ResourceBundleMessageSource</buildArg>
                         <buildArg>-H:IncludeResourceBundles=messages</buildArg>
                         <buildArg>-H:IncludeResourceBundles=ValidationMessages</buildArg>
+                        <buildArg>-H:+IncludeAllLocales</buildArg>
+                        <buildArg>-H:+AddAllCharsets</buildArg>
+                        <buildArg>-H:-LocalizationOptimizedMode</buildArg>
                         <buildArg>-H:IncludeResources=.*\.properties$</buildArg>
                         <buildArg>-H:IncludeResources=.*\.yml$</buildArg>
                         <buildArg>-H:IncludeResources=.*\.yaml$</buildArg>
                         <buildArg>-H:IncludeResources=META-INF/spring\.factories</buildArg>
                         <buildArg>-H:IncludeResources=META-INF/spring/.*</buildArg>
-                        <buildArg>-H:IncludeLocales</buildArg>
-                        <buildArg>-H:+IncludeResourceBundles</buildArg>
-<!--                        <buildArg>-H:ReflectionConfigurationResources=${project.basedir}/reflect-config.json</buildArg>-->
                         <buildArg>-O3</buildArg>
                     </buildArgs>
                     <metadataRepository>

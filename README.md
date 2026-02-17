@@ -2,10 +2,24 @@
 
 # How to use:
 
+## Tests:
+
+### JVM mode unit tests:
+
+```shell
+./mvnw clean test
+```
+
+### Native mode unit tests:
+
+```shell
+./mvnw clean -PnativeTest test
+```
+
 ## JVM mode:
 
 ```shell
-./mvnw clean spring-boot:run
+./mvnw clean spring-boot:run -Dmaven.test.skip=true
 ```
 
 ## Docker:
@@ -13,10 +27,10 @@
 ### Build docker image:
 
 ```shell
-./mvnw clean spring-boot:build-image -Dspring-boot.build-image.imageName=spends:latest -Pnative
+./mvnw clean spring-boot:build-image -Dmaven.test.skip=true -Dspring-boot.build-image.imageName=spends:latest -Pnative
 ```
 
-## Run docker image:
+### Run docker image:
 
 ```shell
 docker run --rm -p 8000:8000 -p 8001:8001 spends:latest
@@ -24,13 +38,13 @@ docker run --rm -p 8000:8000 -p 8001:8001 spends:latest
 
 ## Native:
 
-## Build native image:
+### Build native image:
 
 ```shell
-./mvnw clean native:compile -Pnative
+./mvnw clean native:compile -Pnative -Dmaven.test.skip=true
 ```
 
-## Run native image:
+### Run native image:
 
 ```shell
 ./target/spends
