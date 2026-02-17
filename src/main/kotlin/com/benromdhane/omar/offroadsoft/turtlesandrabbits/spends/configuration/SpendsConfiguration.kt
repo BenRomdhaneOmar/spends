@@ -6,8 +6,8 @@ import com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.service.SpendsS
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
-@Configuration
-class SpendsConfiguration {
+@Configuration(proxyBeanMethods = false)
+object SpendsConfiguration {
 
     @Bean
     fun spendsService(
@@ -21,5 +21,4 @@ class SpendsConfiguration {
     @Bean
     fun inMemorySpendsRepository() =
         InMemorySpendsRepository
-            .instance()
 }

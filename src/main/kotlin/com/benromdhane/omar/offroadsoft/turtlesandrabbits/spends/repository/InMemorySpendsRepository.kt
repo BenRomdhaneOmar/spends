@@ -6,32 +6,13 @@ import com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.model.Persisted
 import com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.model.Spend
 import org.jetbrains.annotations.TestOnly
 import java.util.concurrent.CopyOnWriteArrayList
-import java.util.concurrent.locks.ReentrantLock
-import kotlin.concurrent.withLock
 import kotlin.uuid.ExperimentalUuidApi
 import kotlin.uuid.Uuid
 
 @OptIn(ExperimentalUuidApi::class)
-class InMemorySpendsRepository private constructor(
-    private val spends: CopyOnWriteArrayList<PersistedSpend>
-) : SpendsRepository {
+object InMemorySpendsRepository : SpendsRepository {
 
-    companion object {
-
-        private val spends = CopyOnWriteArrayList<PersistedSpend>()
-        private val instanceLock = ReentrantLock()
-        private var instance: InMemorySpendsRepository? = null
-
-        fun instance() =
-            instanceLock
-                .withLock {
-                    instance
-                        ?: InMemorySpendsRepository(
-                            spends
-                        )
-                            .also { instance = it }
-                }
-    }
+    private val spends = CopyOnWriteArrayList<PersistedSpend>()
 
     override fun allSpends(): SuccessOrSingleError<Collection<PersistedSpend>, SpendsRepository.Error> =
         this.spends

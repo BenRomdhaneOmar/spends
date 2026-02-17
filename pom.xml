@@ -228,6 +228,8 @@
                         <buildArg>-H:IncludeResources=.*\.yaml$</buildArg>
                         <buildArg>-H:IncludeResources=META-INF/spring\.factories</buildArg>
                         <buildArg>-H:IncludeResources=META-INF/spring/.*</buildArg>
+                        <buildArg>-H:IncludeLocales</buildArg>
+                        <buildArg>-H:+IncludeResourceBundles</buildArg>
 <!--                        <buildArg>-H:ReflectionConfigurationResources=${project.basedir}/reflect-config.json</buildArg>-->
                         <buildArg>-O3</buildArg>
                     </buildArgs>

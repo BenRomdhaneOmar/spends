@@ -16,8 +16,8 @@ interface SpendsRepository {
             object NoSpendsFound : Business
         }
 
-        @ConsistentCopyVisibility
-        data class Infrastructure private constructor(
+        @JvmInline
+        value class Infrastructure private constructor(
             val cause: Throwable
         ) : Error {
             companion object {

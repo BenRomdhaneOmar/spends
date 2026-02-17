@@ -1,14 +1,13 @@
 package com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.rest.dto
 
 import com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.model.Spend
-import kotlinx.datetime.LocalDate
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class SpendDTO(
     val value: Float,
-    val date: LocalDate,
-    val description: String?
+    val date: DateDTO,
+    val description: String? = null
 ) {
 
     fun toSpend() =
@@ -16,7 +15,7 @@ data class SpendDTO(
             .Builder
             .instance()
             .withValue(this.value)
-            .withDate(this.date)
+            .withDate(this.date.toLocalDate())
             .withDescription(this.description)
             .build()
 }
