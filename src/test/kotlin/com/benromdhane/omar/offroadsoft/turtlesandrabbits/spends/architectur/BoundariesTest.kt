@@ -10,33 +10,14 @@ class BoundariesTest {
             .importPackages("com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends")
 
     @Test
-    fun `service classes must have service as a part of the name`() {
+    fun `core classes must be always io and framework independent`() {
         ArchRuleDefinition
             .classes()
             .that()
-            .resideInAPackage("..service..")
-            .and()
-            .haveSimpleNameNotContaining("Test")
-            .and()
-            .areTopLevelClasses()
-            .should()
-            .haveSimpleNameContaining("Service")
-            .because("service must be always in service package")
-            .check(this.classFileImporter)
-    }
-
-    @Test
-    fun `service classes must depend only on helpers and language apis`() {
-        ArchRuleDefinition
-            .classes()
-            .that()
-            .resideInAPackage("..service..")
+            .resideInAPackage("com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.core..")
             .and()
             .haveSimpleNameNotContaining("Test")
             .should()
-            .onlyDependOnClassesThat()
-            .areInterfaces()
-            .orShould()
             .onlyDependOnClassesThat()
             .resideInAnyPackage(
                 "java..",
@@ -44,43 +25,23 @@ class BoundariesTest {
                 "kotlinx..",
                 "org.jetbrains..",
                 "com.benromdhane.omar.offroadsoft..",
-                "com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.model.."
+                "com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.core"
             )
-            .because("service must be always io and framework independent")
+            .because("core components must be always io and framework independent")
             .check(this.classFileImporter)
     }
 
     @Test
-    fun `model classes must depend only on helpers and language apis`() {
+    fun `core repository must be always an abstraction contract`() {
         ArchRuleDefinition
             .classes()
             .that()
-            .resideInAPackage("..model..")
+            .resideInAPackage("com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.core.repository")
             .and()
             .haveSimpleNameNotContaining("Test")
             .should()
-            .onlyDependOnClassesThat()
-            .areInterfaces()
-            .orShould()
-            .onlyDependOnClassesThat()
-            .resideInAnyPackage(
-                "java..",
-                "kotlin..",
-                "kotlinx..",
-                "org.jetbrains..",
-                "com.benromdhane.omar.offroadsoft..",
-                "com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.model.."
-            )
-            .because("models must be always io and framework independent")
+            .beInterfaces()
+            .because("core repository must be always an abstraction contract")
             .check(this.classFileImporter)
     }
-//    TODO(check no classes inside service except for java and kotlin and kotlinx and helper)
-//    TODO(check no classes inside repository interface except for java and kotlin and kotlinx and helper)
-//    TODO(check no classes inside models except for java and kotlin and kotlinx and helper)
-//    TODO(check repository interface is used only from service)
-//    TODO(check repository implementation is instantiated only from configuration file)
-//    TODO(check service is used only from handler)
-//    TODO(check service is instantiated only from configuration file)
-//    TODO(check handler is used only from router)
-//    TODO(check handler is instantiated only from configuration file)
 }

@@ -1,8 +1,8 @@
 package com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.configuration
 
-import com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.repository.InMemorySpendsRepository
-import com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.repository.SpendsRepository
-import com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.service.SpendsService
+import com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.core.repository.SpendsRepository
+import com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.core.service.SpendsService
+import com.benromdhane.omar.offroadsoft.turtlesandrabbits.spends.infrastructure.repository.InMemorySpendsRepository
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
